@@ -10,13 +10,15 @@ public class PlayerInputHandler : MonoBehaviour
 {
     public float LookSensitivity = 1f;
     public float TriggerAxisThreshold = 0.4f;
-    public bool InvertYAxis = false;
-    public bool InvertXAxis = false;
+    public bool InvertYAxisMouse = false;
+    public bool InvertXAxisMouse = false;
+    public bool InvertYAxisGamepad = true;
+    public bool InvertXAxisGamepad = false;
 
     private PlayerCharacterController playerCharacterController;
     private Controls controls;
     private InputControlScheme currentControlScheme;
-    private bool IsGamepad { get => currentControlScheme.Equals(controls.GamepadScheme); }
+    private bool IsGamepad { get => controls.Player.Equals(controls.GamepadScheme); }
 
     public bool CanProcessInput { get => Cursor.lockState == CursorLockMode.Locked; }
 
@@ -26,6 +28,8 @@ public class PlayerInputHandler : MonoBehaviour
         if (controls ==  null)
             controls = new Controls();
         controls.Enable();
+        controls.Player.Fire.performed += Fire_performed;
+        controls.Player.Jump.performed += Jump_performed;
     }
 
     private void OnDisable()
@@ -34,17 +38,22 @@ public class PlayerInputHandler : MonoBehaviour
         controls.Disable();
     }
 
+    private void Jump_performed(InputAction.CallbackContext obj)
+    {
+        playerCharacterController.Jump();
+    }
+
+    private void Fire_performed(InputAction.CallbackContext obj)
+    {
+        playerCharacterController.Fire();
+    }
+
     private void Start()
     {
         playerCharacterController = GetComponent<PlayerCharacterController>();
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-    }
-
-    private void LateUpdate()
-    {
-        // TODO: Fire Input Held
     }
 
     void OnInputDeviceChanged(InputUser user, InputUserChange change, InputDevice device)
@@ -64,7 +73,6 @@ public class PlayerInputHandler : MonoBehaviour
             Vector2 raw = controls.Player.Move.ReadValue<Vector2>();
             Vector3 move = new Vector3(raw.x, 0f, raw.y);
             move = Vector3.ClampMagnitude(move, 1);
-            Debug.Log("Move input is: " + move);
             return move;
         }
         return Vector3.zero;
@@ -72,17 +80,27 @@ public class PlayerInputHandler : MonoBehaviour
 
     public Vector2 GetLookInput()
     {
+        //var temp = InputUser.all[0].controlScheme.Value.Equals(controls.GamepadScheme);
+
         if (CanProcessInput)
         {
             Vector2 look = controls.Player.Look.ReadValue<Vector2>();
-            if (InvertYAxis)
-                look.y *= -1;
-            if (InvertXAxis)
-                look.x *= -1;
-            look *= LookSensitivity;
             if (IsGamepad)
+            {
+                if (InvertYAxisGamepad)
+                    look.y *= -1;
+                if (InvertXAxisGamepad)
+                    look.x *= -1;
                 look *= Time.deltaTime;
-            Debug.Log("Look input is: " + look);
+            }
+            else
+            {
+                if (InvertYAxisMouse)
+                    look.y *= -1;
+                if (InvertXAxisMouse)
+                    look.x *= -1;
+            }
+            look *= LookSensitivity;
             return look;
         }
         return Vector2.zero;

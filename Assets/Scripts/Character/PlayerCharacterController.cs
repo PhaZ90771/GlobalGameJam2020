@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerInputHandler)), RequireComponent(typeof(CharacterController))]
@@ -15,6 +16,7 @@ public class PlayerCharacterController : MonoBehaviour
     private Camera camera;
     private PlayerInputHandler playerInputHandler;
     private CharacterController characterController;
+    private float rotateY;
 
     private bool IsGrounded { get => GroundCheck(); }
 
@@ -44,12 +46,9 @@ public class PlayerCharacterController : MonoBehaviour
         }
         // Vertical Rotation
         {
-            var lookY = look.y * LookRotationSpeed;
-            camera.transform.Rotate(lookY, 0f, 0f, Space.Self);
-
-            var euler = camera.transform.eulerAngles;
-            euler.y = Mathf.Clamp(euler.y, -89f, 89f);
-            camera.transform.eulerAngles = euler;
+            rotateY += (look.y * LookRotationSpeed);
+            rotateY = Mathf.Clamp(rotateY, -90f, 90f);
+            camera.transform.localRotation = Quaternion.Euler(-rotateY, 0f, 0f);
         }
         // Movement
         {
@@ -62,6 +61,23 @@ public class PlayerCharacterController : MonoBehaviour
             }
         }
         characterController.Move(CharacterVelocity * Time.deltaTime);
+    }
+
+    internal void Fire()
+    {
+        if (Physics.Raycast(camera.transform.position, camera.transform.forward, out RaycastHit hit))
+        {
+            var triggerables = hit.transform.gameObject.GetComponents<MonoBehaviour>().OfType<ITriggerable>();
+            foreach (var t in triggerables)
+            {
+                t.Trigger();
+            }
+        }
+    }
+
+    internal void Jump()
+    {
+        throw new NotImplementedException();
     }
 
     private bool GroundCheck()
