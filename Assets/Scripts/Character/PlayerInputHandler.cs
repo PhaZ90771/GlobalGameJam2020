@@ -28,6 +28,8 @@ public class PlayerInputHandler : MonoBehaviour
         if (controls ==  null)
             controls = new Controls();
         controls.Enable();
+        controls.Player.Fire.performed += Fire_performed;
+        controls.Player.Jump.performed += Jump_performed;
     }
 
     private void OnDisable()
@@ -36,17 +38,22 @@ public class PlayerInputHandler : MonoBehaviour
         controls.Disable();
     }
 
+    private void Jump_performed(InputAction.CallbackContext obj)
+    {
+        playerCharacterController.Jump();
+    }
+
+    private void Fire_performed(InputAction.CallbackContext obj)
+    {
+        playerCharacterController.Fire();
+    }
+
     private void Start()
     {
         playerCharacterController = GetComponent<PlayerCharacterController>();
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-    }
-
-    private void LateUpdate()
-    {
-        // TODO: Fire Input Held
     }
 
     void OnInputDeviceChanged(InputUser user, InputUserChange change, InputDevice device)

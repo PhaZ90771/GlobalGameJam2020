@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerInputHandler)), RequireComponent(typeof(CharacterController))]
@@ -60,6 +61,23 @@ public class PlayerCharacterController : MonoBehaviour
             }
         }
         characterController.Move(CharacterVelocity * Time.deltaTime);
+    }
+
+    internal void Fire()
+    {
+        if (Physics.Raycast(camera.transform.position, camera.transform.forward, out RaycastHit hit))
+        {
+            var triggerables = hit.transform.gameObject.GetComponents<MonoBehaviour>().OfType<ITriggerable>();
+            foreach (var t in triggerables)
+            {
+                t.Trigger();
+            }
+        }
+    }
+
+    internal void Jump()
+    {
+        throw new NotImplementedException();
     }
 
     private bool GroundCheck()

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Trigger_Wall_1 : MonoBehaviour
+public class Trigger_Wall_1 : MonoBehaviour, ITriggerable
 {
    
     public Cube_Behavior cube_Behavior;
@@ -38,5 +38,10 @@ public class Trigger_Wall_1 : MonoBehaviour
     {
         cube_Behavior.MoveCube(dir);
 
+    }
+
+    public void Trigger()
+    {
+        testMovment();
     }
 }
