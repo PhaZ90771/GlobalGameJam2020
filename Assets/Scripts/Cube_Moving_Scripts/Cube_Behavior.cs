@@ -26,7 +26,6 @@ public class Cube_Behavior : MonoBehaviour
 
     public void MoveCube(Direction i)
     {
-        float time = 0;
         Vector3 endPos;
         switch (i)
         {
