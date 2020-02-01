@@ -200,3 +200,7 @@ MonoBehaviour:
   LookRotationSpeed: 1
   MoveMaxGroundSpeed: 10
   MoveAccelerationGround: 15
+  JumpForce: 10
+  GravityDownForce: 20
+  GroundCheckDistance: 0.05
+  isGrounded: 0

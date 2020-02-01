@@ -10,15 +10,22 @@ public class PlayerCharacterController : MonoBehaviour
     public float LookRotationSpeed = 1f;
     public float MoveMaxGroundSpeed = 10f;
     public float MoveAccelerationGround = 15f;
+    public float JumpForce = 10f;
+    public float GravityDownForce = 20f;
+    public float GroundCheckDistance = 0.1f;
+
+    public bool isGrounded;
 
     public Vector3 CharacterVelocity { get; private set; }
 
     private Camera camera;
     private PlayerInputHandler playerInputHandler;
     private CharacterController characterController;
-    private float rotateY;
 
-    private bool IsGrounded { get => GroundCheck(); }
+    private float rotateY;
+    private bool attemptJump = false;
+
+    private bool IsGrounded { get; set; }
 
     private void Awake()
     {
@@ -39,6 +46,8 @@ public class PlayerCharacterController : MonoBehaviour
         var move = playerInputHandler.GetMoveInput();
         var look = playerInputHandler.GetLookInput();
 
+        GroundCheck();
+
         // Horizontal Rotation
         {
             var rotX = new Vector3(0f, look.x * LookRotationSpeed, 0f);
@@ -58,8 +67,21 @@ public class PlayerCharacterController : MonoBehaviour
             if (IsGrounded)
             {
                 CharacterVelocity = Vector3.Lerp(CharacterVelocity, targetVelocity, MoveAccelerationGround * Time.deltaTime);
+
+                GroundCheck();
+                if (IsGrounded && attemptJump)
+                {
+                    CharacterVelocity = new Vector3(CharacterVelocity.x, 0f, CharacterVelocity.z);
+                    CharacterVelocity += Vector3.up * JumpForce;
+                }
+                attemptJump = false;
+            }
+            else
+            {
+                CharacterVelocity += Vector3.down * GravityDownForce * Time.deltaTime;
             }
         }
+
         characterController.Move(CharacterVelocity * Time.deltaTime);
     }
 
@@ -77,11 +99,26 @@ public class PlayerCharacterController : MonoBehaviour
 
     internal void Jump()
     {
-        throw new NotImplementedException();
+        attemptJump = true;
     }
 
-    private bool GroundCheck()
+    private void GroundCheck()
     {
-        return true;
+        IsGrounded = false;
+
+        var start = transform.position + Vector3.down * characterController.height / 2f;
+        Ray ray = new Ray(start, Vector3.down);
+        
+        if (Physics.Raycast(ray, out RaycastHit hit))
+        {
+            IsGrounded = hit.distance < GroundCheckDistance;
+            Debug.DrawRay(start, Vector3.down, Color.red);
+        }
+        else
+        {
+            Debug.DrawRay(start, Vector3.down, Color.green);
+        }
+
+        isGrounded = IsGrounded;
     }
 }
