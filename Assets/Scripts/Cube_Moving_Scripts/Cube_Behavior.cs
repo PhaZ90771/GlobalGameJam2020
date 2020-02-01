@@ -11,69 +11,63 @@ public class Cube_Behavior : MonoBehaviour
     public bool test;
 
     private Vector3 pos;
-    private bool isMoving = false;
- 
+    public bool isMoving = false;
+    private Rigidbody rb;
 
 
-    public enum Direction{positiveX, negativeX, positiveZ, negativeZ};
+    public enum Direction { positiveX, negativeX, positiveZ, negativeZ };
     Direction direction;
     // Start is called before the first frame update
     void Start()
     {
-        speed = speed / 10;
+        rb = gameObject.GetComponent<Rigidbody>();
         pos = transform.position;
     }
-
-    public void MoveCube(Direction i)
+    private void Update()
     {
-        Vector3 endPos;
-        switch (i)
+        if (rb.velocity.sqrMagnitude <= 0.01f)
         {
-            case Direction.negativeX:
-                {
-                    endPos = pos - new Vector3(moveDistance, 0, 0);
-                    break;
-                }
-            case Direction.positiveX:
-                {
-                    endPos = pos + new Vector3(moveDistance, 0, 0);
-                    break;
-                };
-            case Direction.positiveZ:
-                {
-                    endPos = pos + new Vector3(0, 0, moveDistance);
-                    break;
-                }; ;
-            case Direction.negativeZ:
-                {
-                    endPos = pos - new Vector3(0, 0, moveDistance);
-                    break;
-                }; ;
-            default:
-                {
-                    Debug.Log("Direction for cube not assigned");
-                    return;
-                };
+            isMoving = false;
         }
-        if(!isMoving)
+        else
         {
-            StartCoroutine(Move(endPos));
             isMoving = true;
         }
     }
 
-    IEnumerator Move(Vector3 endPos)
+    public void MoveCube(Direction i)
     {
-        float time = 0;
-        while (endPos != transform.position)
+        if (!isMoving)
         {
-            transform.position = Vector3.Lerp(pos, endPos, time);
-            time += speed * Time.deltaTime;
-            Debug.Log(time);
-            yield return null;
+            switch (i)
+            {
+                case Direction.negativeX:
+                    {
+                        rb.AddForce(new Vector3(1.033f, 0, 0), ForceMode.VelocityChange);
+                        break;
+                    }
+                case Direction.positiveX:
+                    {
+                        rb.AddForce(new Vector3(-1.033f, 0, 0), ForceMode.VelocityChange);
+                        break;
+                    };
+                case Direction.positiveZ:
+                    {
+                        rb.AddForce(new Vector3(0, 0, 1.033f), ForceMode.VelocityChange);
+
+                        break;
+                    }; ;
+                case Direction.negativeZ:
+                    {
+                        rb.AddForce(new Vector3(0, 0, -1.033f), ForceMode.VelocityChange);
+                        break;
+                    }; ;
+                default:
+                    {
+                        Debug.Log("Direction for cube not assigned");
+                        return;
+                    };
+            }
         }
-        pos = transform.position;
-        isMoving = false;
-        yield return null;
     }
 }
