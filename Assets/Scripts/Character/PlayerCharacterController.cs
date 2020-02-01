@@ -15,6 +15,7 @@ public class PlayerCharacterController : MonoBehaviour
     private Camera camera;
     private PlayerInputHandler playerInputHandler;
     private CharacterController characterController;
+    private float rotateY;
 
     private bool IsGrounded { get => GroundCheck(); }
 
@@ -44,12 +45,9 @@ public class PlayerCharacterController : MonoBehaviour
         }
         // Vertical Rotation
         {
-            var lookY = look.y * LookRotationSpeed;
-            camera.transform.Rotate(lookY, 0f, 0f, Space.Self);
-
-            var euler = camera.transform.eulerAngles;
-            euler.y = Mathf.Clamp(euler.y, -89f, 89f);
-            camera.transform.eulerAngles = euler;
+            rotateY += (look.y * LookRotationSpeed);
+            rotateY = Mathf.Clamp(rotateY, -90f, 90f);
+            camera.transform.localRotation = Quaternion.Euler(-rotateY, 0f, 0f);
         }
         // Movement
         {
