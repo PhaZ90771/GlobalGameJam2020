@@ -801,6 +801,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1057917094, guid: 831a5d6655167b848a67da5292bbb764, type: 3}
+      propertyPath: moveDistance
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1188397762063643421, guid: 831a5d6655167b848a67da5292bbb764,
         type: 3}
       propertyPath: m_Name
@@ -809,17 +813,17 @@ PrefabInstance:
     - target: {fileID: 1188397762063643425, guid: 831a5d6655167b848a67da5292bbb764,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.55
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1188397762063643425, guid: 831a5d6655167b848a67da5292bbb764,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1188397762063643425, guid: 831a5d6655167b848a67da5292bbb764,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.09
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1188397762063643425, guid: 831a5d6655167b848a67da5292bbb764,
         type: 3}
@@ -861,30 +865,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1460012436984935103, guid: 831a5d6655167b848a67da5292bbb764,
+    - target: {fileID: 1188397762063643425, guid: 831a5d6655167b848a67da5292bbb764,
         type: 3}
-      propertyPath: m_Name
-      value: TriggerWall 1 (+Z)
+      propertyPath: m_LocalScale.x
+      value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 1770922050891901276, guid: 831a5d6655167b848a67da5292bbb764,
+    - target: {fileID: 1188397762063643425, guid: 831a5d6655167b848a67da5292bbb764,
         type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
+      propertyPath: m_LocalScale.y
+      value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 2105091888474195975, guid: 831a5d6655167b848a67da5292bbb764,
+    - target: {fileID: 1188397762063643425, guid: 831a5d6655167b848a67da5292bbb764,
         type: 3}
-      propertyPath: m_Name
-      value: TriggerWall 2 (-Z)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5981798646044720123, guid: 831a5d6655167b848a67da5292bbb764,
-        type: 3}
-      propertyPath: m_Name
-      value: TriggerWall 3 (-X)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7662201884724152477, guid: 831a5d6655167b848a67da5292bbb764,
-        type: 3}
-      propertyPath: m_Name
-      value: TriggerWall 4 (+X)
+      propertyPath: m_LocalScale.z
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 831a5d6655167b848a67da5292bbb764, type: 3}

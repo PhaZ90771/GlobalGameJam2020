@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1188397762063643424}
   - component: {fileID: 1188397762063643427}
   - component: {fileID: 1188397762063643426}
+  - component: {fileID: 1057917094}
   m_Layer: 0
   m_Name: Moving Cube
   m_TagString: Untagged
@@ -97,6 +98,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1057917094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188397762063643421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b583432ac6491584faf493c9db1f14b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  moveDistance: 5
+  test: 1
 --- !u!1 &1460012436984935103
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,8 +123,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6090438871041488425}
   - component: {fileID: 4457047901149473617}
+  - component: {fileID: 1437505789}
   m_Layer: 0
-  m_Name: TriggerWall (1)
+  m_Name: TriggerWall 1 (+Z)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -141,6 +158,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.95, y: 1, z: 0.05}
   m_Center: {x: 0, y: 0, z: -0.5}
+--- !u!114 &1437505789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460012436984935103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e02f094f0160bd41bf871f85e75c842, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cube_Behavior: {fileID: 1057917094}
 --- !u!1 &2105091888474195975
 GameObject:
   m_ObjectHideFlags: 0
@@ -151,8 +181,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1770922050891901276}
   - component: {fileID: 3238977068940392603}
+  - component: {fileID: 1266136944}
   m_Layer: 0
-  m_Name: TriggerWall (2)
+  m_Name: TriggerWall 2 (-Z)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -185,6 +216,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.95, y: 1, z: 0.05}
   m_Center: {x: 0, y: 0, z: 0.5}
+--- !u!114 &1266136944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2105091888474195975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61be8648b6d30244ea0cf186ed5c39b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cube_Behavior: {fileID: 1057917094}
 --- !u!1 &5981798646044720123
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,8 +239,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8349114581724340180}
   - component: {fileID: 8756872017707243480}
+  - component: {fileID: 321552292}
   m_Layer: 0
-  m_Name: TriggerWall (3)
+  m_Name: TriggerWall 3 (-X)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -229,6 +274,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.05, y: 1, z: 0.95}
   m_Center: {x: 0.5, y: 0, z: 0}
+--- !u!114 &321552292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5981798646044720123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f413bd4306b0f54f8271cffdf7fdb08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cube_Behavior: {fileID: 1057917094}
 --- !u!1 &7662201884724152477
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,8 +297,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5102954847535722671}
   - component: {fileID: 856523731507936813}
+  - component: {fileID: 992400994}
   m_Layer: 0
-  m_Name: TriggerWall (4)
+  m_Name: TriggerWall 4 (+X)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -273,3 +332,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.05, y: 1, z: 0.95}
   m_Center: {x: -0.5, y: 0, z: 0}
+--- !u!114 &992400994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7662201884724152477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c842a2786815dd4ca85978465645133, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cube_Behavior: {fileID: 1057917094}
