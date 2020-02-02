@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1188397762063643426}
   - component: {fileID: 1057917094}
   - component: {fileID: 495132419}
+  - component: {fileID: 6769387116361346784}
   m_Layer: 0
   m_Name: Moving Cube
   m_TagString: Key
@@ -129,6 +130,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &6769387116361346784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188397762063643421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ed48f5ab3c8459439961fd802ddead3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GroundCheckDistance: 1
 --- !u!1 &1460012436984935103
 GameObject:
   m_ObjectHideFlags: 0

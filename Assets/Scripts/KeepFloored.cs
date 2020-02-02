@@ -35,7 +35,7 @@ public class KeepFloored : MonoBehaviour
 
             if (isGrounded)
             {
-                rb.MovePosition(new Vector3(0f, -hit.distance, 0f));
+                transform.Translate(new Vector3(0f, -hit.distance, 0f));
             }
 
             Debug.DrawRay(start, Vector3.down, Color.red);
