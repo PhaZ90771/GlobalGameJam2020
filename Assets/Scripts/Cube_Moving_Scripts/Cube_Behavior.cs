@@ -10,7 +10,6 @@ public class Cube_Behavior : MonoBehaviour
     public float moveDistance;
     public bool test;
 
-    private Vector3 pos;
     public bool isMoving = false;
     private Rigidbody rb;
 
@@ -21,7 +20,6 @@ public class Cube_Behavior : MonoBehaviour
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
-        pos = transform.position;
     }
     private void Update()
     {
