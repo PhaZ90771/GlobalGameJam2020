@@ -30,6 +30,7 @@ public class PlayerCharacterController : MonoBehaviour
     private CharacterController characterController;
     private CrosshairUI crosshairUI;
 
+    [SerializeField]
     private List<ELEMENTS> elements = new List<ELEMENTS>();
 
     private float rotateY;

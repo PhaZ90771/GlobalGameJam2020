@@ -10,6 +10,12 @@ public class ElementsUI : MonoBehaviour
     public Image Earth;
     public Image Water;
 
+    public Color AirColor;
+    public Color FireColor;
+    public Color EarthColor;
+    public Color WaterColor;
+    public Color DisableColor;
+
     PlayerCharacterController playerCharacterController;
 
     private void Awake()
@@ -19,9 +25,9 @@ public class ElementsUI : MonoBehaviour
 
     void Update()
     {
-        Air.enabled = playerCharacterController.HasElement(PlayerCharacterController.ELEMENTS.AIR);
-        Fire.enabled = playerCharacterController.HasElement(PlayerCharacterController.ELEMENTS.FIRE);
-        Earth.enabled = playerCharacterController.HasElement(PlayerCharacterController.ELEMENTS.EARTH);
-        Water.enabled = playerCharacterController.HasElement(PlayerCharacterController.ELEMENTS.WATER);
+        Air.color = playerCharacterController.HasElement(PlayerCharacterController.ELEMENTS.AIR) ? AirColor : DisableColor;
+        Fire.color = playerCharacterController.HasElement(PlayerCharacterController.ELEMENTS.FIRE) ? FireColor : DisableColor;
+        Earth.color = playerCharacterController.HasElement(PlayerCharacterController.ELEMENTS.EARTH) ? EarthColor : DisableColor;
+        Water.color = playerCharacterController.HasElement(PlayerCharacterController.ELEMENTS.WATER) ? WaterColor : DisableColor;
     }
 }
