@@ -7,12 +7,14 @@ public class RestorePowers : MonoBehaviour
     public List<Button> ButtonTriggers;
     public PlayerCharacterController.ELEMENTS ElementToRestore;
 
+    private AudioSource audioSource;
     PlayerCharacterController playerCharacterController;
     bool isUnlocked = false;
 
     private void Awake()
     {
         playerCharacterController = FindObjectOfType<PlayerCharacterController>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -29,5 +31,6 @@ public class RestorePowers : MonoBehaviour
    private void restorePower()
     {
         playerCharacterController.UnlockElement(ElementToRestore);
+        audioSource.PlayOneShot(audioSource.clip);
     }
 }
