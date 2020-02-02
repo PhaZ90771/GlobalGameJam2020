@@ -108,5 +108,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsTriggered: 0
-  OnMaterial: {fileID: 0}
-  OffMaterial: {fileID: 0}
+  OnMaterial: {fileID: 2100000, guid: 355e3a7559ad6d94c8ba98963dd1cccc, type: 2}
+  OffMaterial: {fileID: 2100000, guid: 0f43089e5233f8049bb96ea6deb5e94f, type: 2}
