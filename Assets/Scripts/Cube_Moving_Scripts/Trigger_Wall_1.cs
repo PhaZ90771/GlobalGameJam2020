@@ -19,12 +19,6 @@ public class Trigger_Wall_1 : MonoBehaviour, ITriggerable
     // Update is called once per frame
     void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.W) && test)
-        {
-            testMovment();
-            Debug.Log("Test Started");
-        }
     }
     // moves cube based on direction given
     private void OnTriggerEnter(Collider other)
