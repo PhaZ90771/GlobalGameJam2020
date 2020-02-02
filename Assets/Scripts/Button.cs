@@ -8,6 +8,6 @@ public class Button : MonoBehaviour, ITriggerable
 
     public void Trigger(float distance)
     {
-        IsTriggered = distance <= 2f ? !IsTriggered : IsTriggered;
+        IsTriggered = distance <= 5f ? !IsTriggered : IsTriggered;
     }
 }

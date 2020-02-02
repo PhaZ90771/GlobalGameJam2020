@@ -39,6 +39,15 @@ public class PlayerCharacterController : MonoBehaviour
         HandlePlayerMovement();
     }
 
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.collider.CompareTag("Door"))
+        {
+            Door door = hit.collider.gameObject.GetComponent<Door>();
+            door.Open();
+        }
+    }
+
     private void HandlePlayerMovement()
     {
         var move = playerInputHandler.GetMoveInput();

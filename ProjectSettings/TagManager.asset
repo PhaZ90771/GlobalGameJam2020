@@ -6,6 +6,7 @@ TagManager:
   tags:
   - canMoveCube
   - Key
+  - Door
   layers:
   - Default
   - TransparentFX
