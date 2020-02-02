@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(PlayerInputHandler)), RequireComponent(typeof(CharacterController))]
 public class PlayerCharacterController : MonoBehaviour
@@ -23,14 +23,14 @@ public class PlayerCharacterController : MonoBehaviour
     public float GravityDownForce = 20f;
     public float GroundCheckDistance = 0.1f;
 
+    public List<ELEMENTS> elements = new List<ELEMENTS>();
+
     public Vector3 CharacterVelocity { get; private set; }
 
     private Camera camera;
     private PlayerInputHandler playerInputHandler;
     private CharacterController characterController;
     private CrosshairUI crosshairUI;
-
-    private List<ELEMENTS> elements = new List<ELEMENTS>();
 
     private float rotateY;
     private bool attemptJump = false;
@@ -60,6 +60,7 @@ public class PlayerCharacterController : MonoBehaviour
     }
     private void OnDestroy()
     {
+        PlayerPrefs.DeleteAll();
         foreach (ELEMENTS i in elements)
         {
             PlayerPrefs.SetString(i.ToString(), null);
@@ -157,12 +158,15 @@ public class PlayerCharacterController : MonoBehaviour
                 var trigger = t as ITriggerable;
                 if (trigger != null)
                 {
-                    crosshairUI.CrosshairState = trigger.InRange(hit.distance, elements) ? CrosshairUI.CROSSHAIR_STATES.YES : CrosshairUI.CROSSHAIR_STATES.MAYBE;
+                    var state = trigger.InRange(hit.distance, elements);
+                    crosshairUI.CrosshairState = state ? CrosshairUI.CROSSHAIR_STATES.YES : CrosshairUI.CROSSHAIR_STATES.MAYBE;
+                    crosshairUI.NeededElement = trigger.GetRequiredElement();
                     return;
                 }
             }
         }
         crosshairUI.CrosshairState = CrosshairUI.CROSSHAIR_STATES.NO;
+        crosshairUI.NeededElement = ELEMENTS.NULL;
     }
 
     internal void Jump()
@@ -195,6 +199,20 @@ public class PlayerCharacterController : MonoBehaviour
             elements.Add(element);
         }
     }
+
+    public void ToggleElement(ELEMENTS element)
+    {
+        if (!elements.Contains(element))
+        {
+            elements.Add(element);
+        }
+        else
+        {
+            elements.Remove(element);
+        }
+    }
+
+    
 
     public bool HasElement(ELEMENTS element)
     {

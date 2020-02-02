@@ -12,10 +12,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Tester Scene.unity
     guid: c7e71c84b5cf24c798e1244c763acedb
   - enabled: 1
-    path: Assets/Scenes/Level 2 - Air 1.unity
+    path: Assets/Scenes/Level 2 - Air.unity
     guid: 76d4d42ae7b5e4a569523d375e8375e1
   - enabled: 1
-    path: Assets/Scenes/Level 3- Fire.unity
+    path: Assets/Scenes/Level 3 - Fire.unity
     guid: 432cba105fbcdba4fa8c9e8570518961
   - enabled: 1
     path: Assets/Scenes/Level 4 - Earth.unity

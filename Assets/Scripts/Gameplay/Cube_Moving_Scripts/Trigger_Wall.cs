@@ -15,12 +15,14 @@ public class Trigger_Wall : MonoBehaviour, ITriggerable
 
     public void Trigger(float distance, List<PlayerCharacterController.ELEMENTS> playersElements)
     {
-        if (playersElements.Contains(PlayerCharacterController.ELEMENTS.AIR))
+        if (playersElements.Contains(GetRequiredElement()))
             cube_Behavior.MoveCube(Direction);
     }
 
     public bool InRange(float distance, List<PlayerCharacterController.ELEMENTS> playersElements)
     {
-        return playersElements.Contains(PlayerCharacterController.ELEMENTS.AIR);
+        return playersElements.Contains(GetRequiredElement());
     }
+
+    public PlayerCharacterController.ELEMENTS GetRequiredElement() => PlayerCharacterController.ELEMENTS.AIR;
 }

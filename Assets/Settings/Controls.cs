@@ -49,6 +49,54 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""DebugReload"",
+                    ""type"": ""Button"",
+                    ""id"": ""7f28f238-abaf-41ae-b057-e380abad1b80"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""DebugAir"",
+                    ""type"": ""Button"",
+                    ""id"": ""6837ef8c-06ff-4019-9e78-223012c6d0cf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""DebugFire"",
+                    ""type"": ""Button"",
+                    ""id"": ""1132c7c7-469f-4e0d-83f5-2bb443ce366d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""DebugEarth"",
+                    ""type"": ""Button"",
+                    ""id"": ""14c1b145-bf98-44f1-b5af-b59c69a22ea7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""DebugWater"",
+                    ""type"": ""Button"",
+                    ""id"": ""c25625a8-eb54-4e3f-b0a1-3c657d7e14cc"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""DebugReset"",
+                    ""type"": ""Button"",
+                    ""id"": ""5160399b-2856-4572-be01-3a5acee62fe5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -183,6 +231,138 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""Fire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""794c8b52-503f-4c1e-9558-ab1d51fb3cc7"",
+                    ""path"": ""<Keyboard>/backquote"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""DebugReload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c634c5e4-317e-4a9f-ba9f-8f823c96bd67"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DebugReload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""54ad0925-9eaf-4061-b1f6-e68203d28a55"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""DebugAir"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""734a6c8c-fcff-487d-b2ed-083d5dadaad0"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""DebugFire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6587190b-7d11-4c02-9c3b-550cdd2eb178"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""DebugEarth"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""311484f3-ff9b-4af6-9e4a-541421298f0d"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""DebugWater"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9f6962fa-89c8-4297-8ce5-9b1f64a4bee7"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DebugAir"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""38a460f1-0380-4b95-8668-4756a7c20e1c"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DebugFire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""58085b0b-03db-4787-bb06-92c467500a97"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DebugEarth"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0aea1467-6c92-42dd-9ab6-65c834089e22"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DebugWater"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""44815fd0-d6ee-41cb-b345-cebab9cb40c2"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse;Gamepad"",
+                    ""action"": ""DebugReset"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e0c78dde-96c2-4d85-92e6-13a4b765c473"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DebugReset"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -223,6 +403,12 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
+        m_Player_DebugReload = m_Player.FindAction("DebugReload", throwIfNotFound: true);
+        m_Player_DebugAir = m_Player.FindAction("DebugAir", throwIfNotFound: true);
+        m_Player_DebugFire = m_Player.FindAction("DebugFire", throwIfNotFound: true);
+        m_Player_DebugEarth = m_Player.FindAction("DebugEarth", throwIfNotFound: true);
+        m_Player_DebugWater = m_Player.FindAction("DebugWater", throwIfNotFound: true);
+        m_Player_DebugReset = m_Player.FindAction("DebugReset", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -276,6 +462,12 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Fire;
+    private readonly InputAction m_Player_DebugReload;
+    private readonly InputAction m_Player_DebugAir;
+    private readonly InputAction m_Player_DebugFire;
+    private readonly InputAction m_Player_DebugEarth;
+    private readonly InputAction m_Player_DebugWater;
+    private readonly InputAction m_Player_DebugReset;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -284,6 +476,12 @@ public class @Controls : IInputActionCollection, IDisposable
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
+        public InputAction @DebugReload => m_Wrapper.m_Player_DebugReload;
+        public InputAction @DebugAir => m_Wrapper.m_Player_DebugAir;
+        public InputAction @DebugFire => m_Wrapper.m_Player_DebugFire;
+        public InputAction @DebugEarth => m_Wrapper.m_Player_DebugEarth;
+        public InputAction @DebugWater => m_Wrapper.m_Player_DebugWater;
+        public InputAction @DebugReset => m_Wrapper.m_Player_DebugReset;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -305,6 +503,24 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Fire.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
                 @Fire.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
                 @Fire.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
+                @DebugReload.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDebugReload;
+                @DebugReload.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDebugReload;
+                @DebugReload.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDebugReload;
+                @DebugAir.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDebugAir;
+                @DebugAir.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDebugAir;
+                @DebugAir.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDebugAir;
+                @DebugFire.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDebugFire;
+                @DebugFire.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDebugFire;
+                @DebugFire.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDebugFire;
+                @DebugEarth.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDebugEarth;
+                @DebugEarth.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDebugEarth;
+                @DebugEarth.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDebugEarth;
+                @DebugWater.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDebugWater;
+                @DebugWater.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDebugWater;
+                @DebugWater.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDebugWater;
+                @DebugReset.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDebugReset;
+                @DebugReset.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDebugReset;
+                @DebugReset.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDebugReset;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -321,6 +537,24 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Fire.started += instance.OnFire;
                 @Fire.performed += instance.OnFire;
                 @Fire.canceled += instance.OnFire;
+                @DebugReload.started += instance.OnDebugReload;
+                @DebugReload.performed += instance.OnDebugReload;
+                @DebugReload.canceled += instance.OnDebugReload;
+                @DebugAir.started += instance.OnDebugAir;
+                @DebugAir.performed += instance.OnDebugAir;
+                @DebugAir.canceled += instance.OnDebugAir;
+                @DebugFire.started += instance.OnDebugFire;
+                @DebugFire.performed += instance.OnDebugFire;
+                @DebugFire.canceled += instance.OnDebugFire;
+                @DebugEarth.started += instance.OnDebugEarth;
+                @DebugEarth.performed += instance.OnDebugEarth;
+                @DebugEarth.canceled += instance.OnDebugEarth;
+                @DebugWater.started += instance.OnDebugWater;
+                @DebugWater.performed += instance.OnDebugWater;
+                @DebugWater.canceled += instance.OnDebugWater;
+                @DebugReset.started += instance.OnDebugReset;
+                @DebugReset.performed += instance.OnDebugReset;
+                @DebugReset.canceled += instance.OnDebugReset;
             }
         }
     }
@@ -349,5 +583,11 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
+        void OnDebugReload(InputAction.CallbackContext context);
+        void OnDebugAir(InputAction.CallbackContext context);
+        void OnDebugFire(InputAction.CallbackContext context);
+        void OnDebugEarth(InputAction.CallbackContext context);
+        void OnDebugWater(InputAction.CallbackContext context);
+        void OnDebugReset(InputAction.CallbackContext context);
     }
 }

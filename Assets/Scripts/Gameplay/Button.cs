@@ -26,11 +26,13 @@ public class Button : MonoBehaviour, ITriggerable
 
     public void Trigger(float distance, List<PlayerCharacterController.ELEMENTS> playersElements)
     {
-        IsTriggered = distance <= 5f && playersElements.Contains(PlayerCharacterController.ELEMENTS.NULL) ? !IsTriggered : IsTriggered;
+        IsTriggered = distance <= 5f && playersElements.Contains(GetRequiredElement()) ? !IsTriggered : IsTriggered;
     }
 
     public bool InRange(float distance, List<PlayerCharacterController.ELEMENTS> playersElements)
     {
-        return distance <= 5f && playersElements.Contains(PlayerCharacterController.ELEMENTS.NULL);
+        return distance <= 5f && playersElements.Contains(GetRequiredElement());
     }
+
+    public PlayerCharacterController.ELEMENTS GetRequiredElement() => PlayerCharacterController.ELEMENTS.NULL;
 }
