@@ -1,40 +1,51 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Users;
 
 [RequireComponent(typeof(PlayerCharacterController))]
 public class PlayerInputHandler : MonoBehaviour
 {
-    public float LookSensitivity = 1f;
+    public enum CONTROL_MODE
+    {
+        KEYBOARDMOUSE,
+        GAMEPAD
+    }
+
+    public CONTROL_MODE CurrentControlMode = CONTROL_MODE.GAMEPAD;
+
+    public float LookSensitivityMouse = 1f;
+    public float LookSensitivityGamepad = 1f;
+    
     public float TriggerAxisThreshold = 0.4f;
+
     public bool InvertYAxisMouse = false;
     public bool InvertXAxisMouse = false;
+
     public bool InvertYAxisGamepad = true;
     public bool InvertXAxisGamepad = false;
 
     private PlayerCharacterController playerCharacterController;
     private Controls controls;
-    private InputControlScheme currentControlScheme;
-    private bool IsGamepad { get => controls.Player.Equals(controls.GamepadScheme); }
 
     public bool CanProcessInput { get => Cursor.lockState == CursorLockMode.Locked; }
 
     private void OnEnable()
     {
-        InputUser.onChange += OnInputDeviceChanged;
         if (controls ==  null)
             controls = new Controls();
         controls.Enable();
         controls.Player.Fire.performed += Fire_performed;
         controls.Player.Jump.performed += Jump_performed;
+        controls.Player.Look.started += Look_started;
+    }
+
+    private void Look_started(InputAction.CallbackContext obj)
+    {
+        CurrentControlMode = obj.control.device.name.Equals("Mouse") ? CONTROL_MODE.KEYBOARDMOUSE : CONTROL_MODE.GAMEPAD;
     }
 
     private void OnDisable()
     {
-        InputUser.onChange -= OnInputDeviceChanged;
         controls.Disable();
     }
 
@@ -56,15 +67,9 @@ public class PlayerInputHandler : MonoBehaviour
         Cursor.visible = false;
     }
 
-    void OnInputDeviceChanged(InputUser user, InputUserChange change, InputDevice device)
+    private void Update()
     {
-        if (change == InputUserChange.ControlSchemeChanged)
-        {
-            currentControlScheme = user.controlScheme.Value;
-            Debug.Log("New control scheme is'" + currentControlScheme.name + "'");
-        }
     }
-
 
     public Vector3 GetMoveInput()
     {
@@ -80,18 +85,17 @@ public class PlayerInputHandler : MonoBehaviour
 
     public Vector2 GetLookInput()
     {
-        //var temp = InputUser.all[0].controlScheme.Value.Equals(controls.GamepadScheme);
-
         if (CanProcessInput)
         {
             Vector2 look = controls.Player.Look.ReadValue<Vector2>();
-            if (IsGamepad)
+            if (CurrentControlMode == CONTROL_MODE.GAMEPAD)
             {
                 if (InvertYAxisGamepad)
                     look.y *= -1;
                 if (InvertXAxisGamepad)
                     look.x *= -1;
                 look *= Time.deltaTime;
+                look *= LookSensitivityGamepad;
             }
             else
             {
@@ -99,8 +103,9 @@ public class PlayerInputHandler : MonoBehaviour
                     look.y *= -1;
                 if (InvertXAxisMouse)
                     look.x *= -1;
+                look *= LookSensitivityMouse;
             }
-            look *= LookSensitivity;
+            
             return look;
         }
         return Vector2.zero;
