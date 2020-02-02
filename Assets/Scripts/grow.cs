@@ -6,10 +6,8 @@ public class grow : MonoBehaviour
 {
     private Rigidbody rb;
     private float growDir;
-    Vector3 posOne;
-    Vector3 posTwo;
-    Vector3 nextPos;
-    Vector3 startPos;
+    Vector3 posGrown;
+    Vector3 posShrunk;
     private float time;
     bool canGrow = true;
 
@@ -20,10 +18,19 @@ public class grow : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        posOne = transform.position;
-        posTwo = transform.position + new Vector3(0, transform.localScale.y, 0);
+        posGrown = transform.position;
+        if(growFirst)
+        {
+            posGrown = transform.position + new Vector3(0, transform.localScale.y, 0);
+            posShrunk = transform.position;
+        }
+        else
+        {
+            posGrown = transform.position;
+            posShrunk = transform.position + new Vector3(0, -transform.localScale.y, 0);
+        }
 
-        Debug.Log(posOne.y + "  " +  posTwo.y);
+        Debug.Log(posGrown.y + "  " +  posShrunk.y);
         growDir = 1;
 
     }
@@ -42,31 +49,31 @@ public class grow : MonoBehaviour
         if(canGrow)
         {
             canGrow = false;
-
-            if (growFirst)
-            {
-                nextPos = posTwo;
-            }
-            else
-            {
-                nextPos = posOne;
-            }
             time = 0f;
             StartCoroutine("StartGrow");
-           
         }
         
     }
     IEnumerator StartGrow()
     {
-        Debug.Log("Test");
         while (time < 1f)
         {
-            rb.MovePosition(Vector3.Lerp())
-            time += speed * Time.deltaTime;
-            yield return null;
+            if(growFirst)
+            {
+                rb.MovePosition(Vector3.Lerp(posShrunk, posGrown, time));
+
+                time += speed * Time.deltaTime;
+            }else
+            {
+                rb.MovePosition(Vector3.Lerp(posGrown, posShrunk, time));
+
+                time += speed * Time.deltaTime;
+            }
+
+            yield return new WaitForFixedUpdate();
         }
-        rb.position = nextPos;
+        rb.position = growFirst ? posGrown : posShrunk;
+        growFirst = !growFirst;
         canGrow = true;
         yield return null;
 
