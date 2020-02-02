@@ -94,7 +94,7 @@ public class PlayerCharacterController : MonoBehaviour
             {
                 var trigger = t as ITriggerable;
                 if (trigger != null)
-                    trigger.Trigger();
+                    trigger.Trigger(hit.distance);
             }
 
             Debug.DrawLine(camera.transform.position, hit.point, Color.red);
