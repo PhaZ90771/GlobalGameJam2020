@@ -97,6 +97,38 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""MenuA"",
+                    ""type"": ""Button"",
+                    ""id"": ""09766ec3-f04d-41dc-af26-fc38afd1c63d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""MenuB"",
+                    ""type"": ""Button"",
+                    ""id"": ""38e75ffe-db80-4be1-968d-72c7f10aa4d4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""MenuX"",
+                    ""type"": ""Button"",
+                    ""id"": ""6e79a2c7-b0ec-4543-9b53-b9aadf7f8a51"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""MenuY"",
+                    ""type"": ""Button"",
+                    ""id"": ""8898212f-962d-4e48-b151-8a64a80a142b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -363,6 +395,50 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""DebugReset"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""04ad86ff-a753-4484-8429-e35895e8ea75"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MenuA"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5e0c7868-aad1-48bb-b4de-a6d30d4ddb11"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MenuB"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""aa675002-401b-49ae-b731-e2593ac9fb5c"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MenuX"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ce492ee3-af5e-4555-ab90-94ed7cece34e"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MenuY"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -409,6 +485,10 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Player_DebugEarth = m_Player.FindAction("DebugEarth", throwIfNotFound: true);
         m_Player_DebugWater = m_Player.FindAction("DebugWater", throwIfNotFound: true);
         m_Player_DebugReset = m_Player.FindAction("DebugReset", throwIfNotFound: true);
+        m_Player_MenuA = m_Player.FindAction("MenuA", throwIfNotFound: true);
+        m_Player_MenuB = m_Player.FindAction("MenuB", throwIfNotFound: true);
+        m_Player_MenuX = m_Player.FindAction("MenuX", throwIfNotFound: true);
+        m_Player_MenuY = m_Player.FindAction("MenuY", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -468,6 +548,10 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_DebugEarth;
     private readonly InputAction m_Player_DebugWater;
     private readonly InputAction m_Player_DebugReset;
+    private readonly InputAction m_Player_MenuA;
+    private readonly InputAction m_Player_MenuB;
+    private readonly InputAction m_Player_MenuX;
+    private readonly InputAction m_Player_MenuY;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -482,6 +566,10 @@ public class @Controls : IInputActionCollection, IDisposable
         public InputAction @DebugEarth => m_Wrapper.m_Player_DebugEarth;
         public InputAction @DebugWater => m_Wrapper.m_Player_DebugWater;
         public InputAction @DebugReset => m_Wrapper.m_Player_DebugReset;
+        public InputAction @MenuA => m_Wrapper.m_Player_MenuA;
+        public InputAction @MenuB => m_Wrapper.m_Player_MenuB;
+        public InputAction @MenuX => m_Wrapper.m_Player_MenuX;
+        public InputAction @MenuY => m_Wrapper.m_Player_MenuY;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -521,6 +609,18 @@ public class @Controls : IInputActionCollection, IDisposable
                 @DebugReset.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDebugReset;
                 @DebugReset.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDebugReset;
                 @DebugReset.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDebugReset;
+                @MenuA.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenuA;
+                @MenuA.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenuA;
+                @MenuA.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenuA;
+                @MenuB.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenuB;
+                @MenuB.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenuB;
+                @MenuB.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenuB;
+                @MenuX.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenuX;
+                @MenuX.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenuX;
+                @MenuX.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenuX;
+                @MenuY.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenuY;
+                @MenuY.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenuY;
+                @MenuY.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenuY;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -555,6 +655,18 @@ public class @Controls : IInputActionCollection, IDisposable
                 @DebugReset.started += instance.OnDebugReset;
                 @DebugReset.performed += instance.OnDebugReset;
                 @DebugReset.canceled += instance.OnDebugReset;
+                @MenuA.started += instance.OnMenuA;
+                @MenuA.performed += instance.OnMenuA;
+                @MenuA.canceled += instance.OnMenuA;
+                @MenuB.started += instance.OnMenuB;
+                @MenuB.performed += instance.OnMenuB;
+                @MenuB.canceled += instance.OnMenuB;
+                @MenuX.started += instance.OnMenuX;
+                @MenuX.performed += instance.OnMenuX;
+                @MenuX.canceled += instance.OnMenuX;
+                @MenuY.started += instance.OnMenuY;
+                @MenuY.performed += instance.OnMenuY;
+                @MenuY.canceled += instance.OnMenuY;
             }
         }
     }
@@ -589,5 +701,9 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnDebugEarth(InputAction.CallbackContext context);
         void OnDebugWater(InputAction.CallbackContext context);
         void OnDebugReset(InputAction.CallbackContext context);
+        void OnMenuA(InputAction.CallbackContext context);
+        void OnMenuB(InputAction.CallbackContext context);
+        void OnMenuX(InputAction.CallbackContext context);
+        void OnMenuY(InputAction.CallbackContext context);
     }
 }

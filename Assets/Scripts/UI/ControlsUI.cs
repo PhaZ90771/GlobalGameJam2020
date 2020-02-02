@@ -6,6 +6,7 @@ public class ControlsUI : MonoBehaviour
 {
     Image image;
     PlayerInputHandler playerInputHandler;
+    ControllerUIButtonShim controllerUIButtonShim;
 
     public Sprite KeyboardMouseSprite;
     public Sprite GamepadSprite;
@@ -14,11 +15,13 @@ public class ControlsUI : MonoBehaviour
     {
         image = GetComponent<Image>();
         playerInputHandler = FindObjectOfType<PlayerInputHandler>();
+        controllerUIButtonShim = FindObjectOfType<ControllerUIButtonShim>();
     }
 
     void Update()
     {
-        var newSprite = playerInputHandler.CurrentControlMode == PlayerInputHandler.CONTROL_MODE.GAMEPAD ? GamepadSprite : KeyboardMouseSprite;
+        var inputMode = playerInputHandler != null ? playerInputHandler.CurrentControlMode : controllerUIButtonShim.CurrentControlMode;
+        var newSprite = inputMode == PlayerInputHandler.CONTROL_MODE.GAMEPAD ? GamepadSprite : KeyboardMouseSprite;
         if (!image.sprite.Equals(newSprite))
             image.sprite = newSprite;
     }
