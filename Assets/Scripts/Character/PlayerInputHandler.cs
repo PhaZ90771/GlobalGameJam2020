@@ -51,7 +51,6 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void ResetGame(InputAction.CallbackContext obj)
     {
-        PlayerPrefs.DeleteAll();
         SceneManager.LoadScene("Main Menu");
     }
 
