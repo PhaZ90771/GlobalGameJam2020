@@ -50,14 +50,14 @@ public class Door : MonoBehaviour, ITriggerable
         }
     }
 
-    public bool InRange(float distance)
+    public bool InRange(float distance, List<PlayerCharacterController.ELEMENTS> playersElements)
     {
-        return distance < 5f && IsTriggered;
+        return distance < 5f && IsTriggered && playersElements.Contains(PlayerCharacterController.ELEMENTS.NULL);
     }
 
-    public void Trigger(float distance)
+    public void Trigger(float distance, List<PlayerCharacterController.ELEMENTS> playersElements)
     {
-        if (distance < 5f && IsTriggered)
+        if (distance < 5f && IsTriggered && playersElements.Contains(PlayerCharacterController.ELEMENTS.NULL))
         {
             Open();
         }

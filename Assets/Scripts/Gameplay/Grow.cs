@@ -79,15 +79,15 @@ public class Grow : MonoBehaviour, ITriggerable
 
     }
 
-    public void Trigger(float distance)
+    public void Trigger(float distance, List<PlayerCharacterController.ELEMENTS> playersElements)
     {
-        if (distance < triggableDistance)
+        if (distance < triggableDistance && playersElements.Contains(PlayerCharacterController.ELEMENTS.EARTH))
             growBlock();
     }
 
-    public bool InRange(float distance)
+    public bool InRange(float distance, List<PlayerCharacterController.ELEMENTS> playersElements)
     {
-        return distance < triggableDistance;
+        return distance < triggableDistance && playersElements.Contains(PlayerCharacterController.ELEMENTS.EARTH);
     }
 }
 

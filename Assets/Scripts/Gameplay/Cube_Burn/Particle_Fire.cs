@@ -27,17 +27,17 @@ public class Particle_Fire : MonoBehaviour, ITriggerable
         particle.Play();
     }
 
-    public void Trigger(float distance)
+    public void Trigger(float distance, List<PlayerCharacterController.ELEMENTS> playersElements)
     {
-        if(distance < triggerDistance)
+        if(distance < triggerDistance && playersElements.Contains(PlayerCharacterController.ELEMENTS.FIRE))
         {
             startFire();
             Destroy(this.gameObject, 3f);
         }
     }
 
-    public bool InRange(float distance)
+    public bool InRange(float distance, List<PlayerCharacterController.ELEMENTS> playersElements)
     {
-        return distance < triggerDistance;
+        return distance < triggerDistance && playersElements.Contains(PlayerCharacterController.ELEMENTS.FIRE);
     }
 }

@@ -13,13 +13,14 @@ public class Trigger_Wall : MonoBehaviour, ITriggerable
         cube_Behavior = GetComponentInParent<Cube_Behavior>();
     }
 
-    public void Trigger(float distance)
+    public void Trigger(float distance, List<PlayerCharacterController.ELEMENTS> playersElements)
     {
-        cube_Behavior.MoveCube(Direction);
+        if (playersElements.Contains(PlayerCharacterController.ELEMENTS.AIR))
+            cube_Behavior.MoveCube(Direction);
     }
 
-    public bool InRange(float distance)
+    public bool InRange(float distance, List<PlayerCharacterController.ELEMENTS> playersElements)
     {
-        return true;
+        return playersElements.Contains(PlayerCharacterController.ELEMENTS.AIR);
     }
 }
