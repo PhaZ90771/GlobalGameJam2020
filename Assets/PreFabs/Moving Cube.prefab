@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 1188397762063643421}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 2.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 6090438871041488425}
   - {fileID: 1770922050891901276}
@@ -111,10 +111,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b583432ac6491584faf493c9db1f14b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 200
-  moveDistance: 1
-  test: 1
-  isMoving: 0
+  Speed: 0
+  MoveDistance: 0
 --- !u!54 &495132419
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -185,10 +183,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1460012436984935103}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e02f094f0160bd41bf871f85e75c842, type: 3}
+  m_Script: {fileID: 11500000, guid: b1881597f5c3b894f822fd3f1a266c0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cube_Behavior: {fileID: 1057917094}
+  Direction: 2
 --- !u!1 &2105091888474195975
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,10 +241,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2105091888474195975}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61be8648b6d30244ea0cf186ed5c39b7, type: 3}
+  m_Script: {fileID: 11500000, guid: b1881597f5c3b894f822fd3f1a266c0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cube_Behavior: {fileID: 1057917094}
+  Direction: 3
 --- !u!1 &5981798646044720123
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,7 +257,7 @@ GameObject:
   - component: {fileID: 8756872017707243480}
   - component: {fileID: 321552292}
   m_Layer: 0
-  m_Name: TriggerWall 3 (-X)
+  m_Name: TriggerWall 3 (+X)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -301,10 +299,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5981798646044720123}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f413bd4306b0f54f8271cffdf7fdb08, type: 3}
+  m_Script: {fileID: 11500000, guid: b1881597f5c3b894f822fd3f1a266c0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cube_Behavior: {fileID: 1057917094}
+  Direction: 0
 --- !u!1 &7662201884724152477
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,7 +315,7 @@ GameObject:
   - component: {fileID: 856523731507936813}
   - component: {fileID: 992400994}
   m_Layer: 0
-  m_Name: TriggerWall 4 (+X)
+  m_Name: TriggerWall 4 (-X)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -359,7 +357,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7662201884724152477}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c842a2786815dd4ca85978465645133, type: 3}
+  m_Script: {fileID: 11500000, guid: b1881597f5c3b894f822fd3f1a266c0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cube_Behavior: {fileID: 1057917094}
+  Direction: 1
