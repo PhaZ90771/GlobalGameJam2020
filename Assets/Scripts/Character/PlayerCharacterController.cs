@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(PlayerInputHandler)), RequireComponent(typeof(CharacterController))]
 public class PlayerCharacterController : MonoBehaviour
@@ -23,15 +23,14 @@ public class PlayerCharacterController : MonoBehaviour
     public float GravityDownForce = 20f;
     public float GroundCheckDistance = 0.1f;
 
+    public List<ELEMENTS> elements = new List<ELEMENTS>();
+
     public Vector3 CharacterVelocity { get; private set; }
 
     private Camera camera;
     private PlayerInputHandler playerInputHandler;
     private CharacterController characterController;
     private CrosshairUI crosshairUI;
-
-    [SerializeField]
-    private List<ELEMENTS> elements = new List<ELEMENTS>();
 
     private float rotateY;
     private bool attemptJump = false;
@@ -61,6 +60,7 @@ public class PlayerCharacterController : MonoBehaviour
     }
     private void OnDestroy()
     {
+        PlayerPrefs.DeleteAll();
         foreach (ELEMENTS i in elements)
         {
             PlayerPrefs.SetString(i.ToString(), null);
@@ -196,6 +196,20 @@ public class PlayerCharacterController : MonoBehaviour
             elements.Add(element);
         }
     }
+
+    public void ToggleElement(ELEMENTS element)
+    {
+        if (!elements.Contains(element))
+        {
+            elements.Add(element);
+        }
+        else
+        {
+            elements.Remove(element);
+        }
+    }
+
+    
 
     public bool HasElement(ELEMENTS element)
     {

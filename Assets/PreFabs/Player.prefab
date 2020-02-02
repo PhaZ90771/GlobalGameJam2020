@@ -504,7 +504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5afc93ed5ef20f54fb8697c88091fed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentControlMode: 1
+  CurrentControlMode: 0
   LookSensitivityMouse: 1
   LookSensitivityGamepad: 500
   TriggerAxisThreshold: 0.4
@@ -530,6 +530,7 @@ MonoBehaviour:
   JumpForce: 10
   GravityDownForce: 20
   GroundCheckDistance: 0.05
+  elements: 
 --- !u!1 &7966564802535367085
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Users;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(PlayerCharacterController))]
 public class PlayerInputHandler : MonoBehaviour
@@ -11,7 +13,7 @@ public class PlayerInputHandler : MonoBehaviour
         GAMEPAD
     }
 
-    public CONTROL_MODE CurrentControlMode = CONTROL_MODE.GAMEPAD;
+    public CONTROL_MODE CurrentControlMode = CONTROL_MODE.KEYBOARDMOUSE;
 
     public float LookSensitivityMouse = 1f;
     public float LookSensitivityGamepad = 1f;
@@ -24,19 +26,45 @@ public class PlayerInputHandler : MonoBehaviour
     public bool InvertYAxisGamepad = true;
     public bool InvertXAxisGamepad = false;
 
+    public Controls Controls;
+
     private PlayerCharacterController playerCharacterController;
-    private Controls controls;
 
     public bool CanProcessInput { get => Cursor.lockState == CursorLockMode.Locked; }
 
     private void OnEnable()
     {
-        if (controls ==  null)
-            controls = new Controls();
-        controls.Enable();
-        controls.Player.Fire.performed += Fire_performed;
-        controls.Player.Jump.performed += Jump_performed;
-        controls.Player.Look.started += Look_started;
+        if (Controls ==  null)
+            Controls = new Controls();
+        Controls.Enable();
+        Controls.Player.Fire.performed += Fire_performed;
+        Controls.Player.Jump.performed += Jump_performed;
+        Controls.Player.Look.started += Look_started;
+
+        Controls.Player.DebugReload.performed += ReloadLevel;
+        Controls.Player.DebugAir.performed += ToggleElement;
+        Controls.Player.DebugFire.performed += ToggleElement;
+        Controls.Player.DebugEarth.performed += ToggleElement;
+        Controls.Player.DebugWater.performed += ToggleElement;
+    }
+
+    private void ToggleElement(InputAction.CallbackContext obj)
+    {
+        switch (obj.action.name)
+        {
+            case "DebugAir":
+            playerCharacterController.ToggleElement(PlayerCharacterController.ELEMENTS.AIR);
+            break;
+            case "DebugFire":
+            playerCharacterController.ToggleElement(PlayerCharacterController.ELEMENTS.FIRE);
+            break;
+            case "DebugEarth":
+            playerCharacterController.ToggleElement(PlayerCharacterController.ELEMENTS.EARTH);
+            break;
+            case "DebugWater":
+            playerCharacterController.ToggleElement(PlayerCharacterController.ELEMENTS.WATER);
+            break;
+        }
     }
 
     private void Look_started(InputAction.CallbackContext obj)
@@ -46,7 +74,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void OnDisable()
     {
-        controls.Disable();
+        Controls.Disable();
     }
 
     private void Jump_performed(InputAction.CallbackContext obj)
@@ -57,6 +85,11 @@ public class PlayerInputHandler : MonoBehaviour
     private void Fire_performed(InputAction.CallbackContext obj)
     {
         playerCharacterController.Fire();
+    }
+
+    private void ReloadLevel(InputAction.CallbackContext obj)
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void Start()
@@ -75,7 +108,7 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (CanProcessInput)
         {
-            Vector2 raw = controls.Player.Move.ReadValue<Vector2>();
+            Vector2 raw = Controls.Player.Move.ReadValue<Vector2>();
             Vector3 move = new Vector3(raw.x, 0f, raw.y);
             move = Vector3.ClampMagnitude(move, 1);
             return move;
@@ -87,7 +120,7 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (CanProcessInput)
         {
-            Vector2 look = controls.Player.Look.ReadValue<Vector2>();
+            Vector2 look = Controls.Player.Look.ReadValue<Vector2>();
             if (CurrentControlMode == CONTROL_MODE.GAMEPAD)
             {
                 if (InvertYAxisGamepad)
