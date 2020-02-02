@@ -212,8 +212,6 @@ public class PlayerCharacterController : MonoBehaviour
         }
     }
 
-    
-
     public bool HasElement(ELEMENTS element)
     {
         return elements.Contains(element);

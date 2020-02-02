@@ -4,19 +4,21 @@ using UnityEngine;
 
 public class RestorePowers : MonoBehaviour
 {
-    public List<Button> buttons;
-    public PlayerCharacterController.ELEMENTS elements;
-    public PlayerCharacterController playerCharacterController;
-    void Start()
+    public List<Button> ButtonTriggers;
+    public PlayerCharacterController.ELEMENTS ElementToRestore;
+
+    PlayerCharacterController playerCharacterController;
+    bool isUnlocked = false;
+
+    private void Awake()
     {
-        
+        playerCharacterController = FindObjectOfType<PlayerCharacterController>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        bool isUnlocked = false;
-        foreach (var button in buttons)
+        isUnlocked = true;
+        foreach (var button in ButtonTriggers)
         {
             if (!button.IsTriggered)
                 isUnlocked = false;
@@ -26,6 +28,6 @@ public class RestorePowers : MonoBehaviour
     }
    private void restorePower()
     {
-        playerCharacterController.UnlockElement(elements);
+        playerCharacterController.UnlockElement(ElementToRestore);
     }
 }

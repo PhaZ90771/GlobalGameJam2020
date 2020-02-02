@@ -106,6 +106,12 @@ public class PlayerInputHandler : MonoBehaviour
         Cursor.visible = false;
     }
 
+    private void OnDestroy()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
     private void Update()
     {
     }
