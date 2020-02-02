@@ -4,24 +4,28 @@ using UnityEngine;
 
 public class Button : MonoBehaviour, ITriggerable
 {
+    public SpriteRenderer spriteRenderer;
     public bool IsTriggered = false;
+    public Color inactiveColor;
+    public Color activeColor;
     public Material OnMaterial;
     public Material OffMaterial;
 
-    private Renderer rend;
 
     private void Awake()
     {
-        rend = GetComponent<Renderer>();
-        rend.material = OffMaterial;
+        spriteRenderer.color = inactiveColor;
     }
 
     private void Update()
     {
-        var newMaterial = IsTriggered ? OnMaterial : OffMaterial;
+        var newColor = IsTriggered ? activeColor : inactiveColor;
+        
+        if (spriteRenderer.color != newColor)
+        {
+            spriteRenderer.color = newColor;
+        }
 
-        if (rend.material != newMaterial)
-            rend.material = newMaterial;
     }
 
     public void Trigger(float distance, List<PlayerCharacterController.ELEMENTS> playersElements)

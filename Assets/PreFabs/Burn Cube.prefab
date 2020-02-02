@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4872828770828301755}
   - component: {fileID: 4872828770828301754}
   - component: {fileID: 4872828770828301753}
-  - component: {fileID: 6877138823326159983}
+  - component: {fileID: 199205122}
   m_Layer: 0
   m_Name: Burn Cube
   m_TagString: Untagged
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 4872828770828301750}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.02, y: 5, z: 9.26}
-  m_LocalScale: {x: 20, y: 10, z: 10}
+  m_LocalScale: {x: 23.94, y: 10, z: 1.01}
   m_Children:
   - {fileID: 4872828771559892248}
   m_Father: {fileID: 0}
@@ -95,7 +95,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6877138823326159983
+--- !u!114 &199205122
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e91f47ad88f16084c8220e94581ce4f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particle: {fileID: 0}
+  particle: {fileID: 4872828771559892251}
   triggerDistance: 10
 --- !u!1 &4872828771559892247
 GameObject:
@@ -165,7 +165,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 2.85
+    scalar: 0
     minScalar: 0
     maxCurve:
       serializedVersion: 2
