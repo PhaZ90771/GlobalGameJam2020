@@ -86,10 +86,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e90e069edc2a0cd458ce34d94cb53ff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsInteractable: 0
+  CrosshairState: 1
   GeneralCrosshair: {fileID: 21300000, guid: e58a44f81a446a647aeeba527c0ddcc3, type: 3}
   InteractableCrosshair: {fileID: 21300000, guid: 43350e4f919590947bee4cb18c1ea064,
     type: 3}
+  PossibleCrosshair: {fileID: 21300000, guid: 4635731f116b38248a113aa69d8e43b0, type: 3}
 --- !u!1 &6165356638966467550
 GameObject:
   m_ObjectHideFlags: 0

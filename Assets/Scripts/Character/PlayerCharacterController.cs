@@ -128,12 +128,12 @@ public class PlayerCharacterController : MonoBehaviour
                 var trigger = t as ITriggerable;
                 if (trigger != null)
                 {
-                    crosshairUI.IsInteractable = trigger.InRange(hit.distance);
+                    crosshairUI.CrosshairState = trigger.InRange(hit.distance) ? CrosshairUI.CROSSHAIR_STATES.YES : CrosshairUI.CROSSHAIR_STATES.MAYBE;
                     return;
                 }
             }
         }
-        crosshairUI.IsInteractable = false;
+        crosshairUI.CrosshairState = CrosshairUI.CROSSHAIR_STATES.NO;
     }
 
     internal void Jump()
