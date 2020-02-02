@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Particle_Fire : MonoBehaviour
+public class Particle_Fire : MonoBehaviour, ITriggerable
 {
     public ParticleSystem particle;
+    public float triggerDistance = 10f;
     // Start is called before the first frame update
     void Start()
     {
-        transform.localScale = transform.parent.localScale;
         particle.Stop();
     }
 
@@ -25,5 +25,14 @@ public class Particle_Fire : MonoBehaviour
     public void startFire ()
     {
         particle.Play();
+    }
+
+    public void Trigger(float distance)
+    {
+        if(distance < triggerDistance)
+        {
+            startFire();
+            Destroy(this.gameObject, 3f);
+        }
     }
 }
