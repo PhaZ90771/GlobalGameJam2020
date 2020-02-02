@@ -7,6 +7,15 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerInputHandler)), RequireComponent(typeof(CharacterController))]
 public class PlayerCharacterController : MonoBehaviour
 {
+    public enum ELEMENTS
+    {
+        NULL,
+        AIR,
+        FIRE,
+        EARTH,
+        WATER
+    }
+
     public float LookRotationSpeed = 1f;
     public float MoveMaxGroundSpeed = 10f;
     public float MoveAccelerationGround = 15f;
