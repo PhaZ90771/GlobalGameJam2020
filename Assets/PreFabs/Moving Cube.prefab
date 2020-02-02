@@ -259,7 +259,7 @@ GameObject:
   - component: {fileID: 8756872017707243480}
   - component: {fileID: 321552292}
   m_Layer: 0
-  m_Name: TriggerWall 3 (-X)
+  m_Name: TriggerWall 3 (+X)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -317,7 +317,7 @@ GameObject:
   - component: {fileID: 856523731507936813}
   - component: {fileID: 992400994}
   m_Layer: 0
-  m_Name: TriggerWall 4 (+X)
+  m_Name: TriggerWall 4 (-X)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

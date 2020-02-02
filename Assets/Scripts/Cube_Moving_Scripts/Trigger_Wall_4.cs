@@ -7,7 +7,7 @@ public class Trigger_Wall_4 : MonoBehaviour, ITriggerable
 {
 
     public Cube_Behavior cube_Behavior;
-    Cube_Behavior.Direction dir = Cube_Behavior.Direction.positiveX;
+    Cube_Behavior.Direction dir = Cube_Behavior.Direction.negativeX;
 
     bool test;
     // Start is called before the first frame update
