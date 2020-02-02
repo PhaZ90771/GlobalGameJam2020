@@ -754,6 +754,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1050789941675589323, guid: e1122d3b9f6720b41839d8d2c467f348,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165356639307222890, guid: e1122d3b9f6720b41839d8d2c467f348,
+        type: 3}
+      propertyPath: InvertYAxisMouse
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6165356639307222890, guid: e1122d3b9f6720b41839d8d2c467f348,
+        type: 3}
+      propertyPath: LookSensitivity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6165356639307222892, guid: e1122d3b9f6720b41839d8d2c467f348,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1008,7 +1023,7 @@ PrefabInstance:
     - target: {fileID: 6450973060909680569, guid: 7bb054d107ce7764bb39e154df842495,
         type: 3}
       propertyPath: GotoScene
-      value: Level One
+      value: Level 1 - Start
       objectReference: {fileID: 0}
     - target: {fileID: 6450973060909680569, guid: 7bb054d107ce7764bb39e154df842495,
         type: 3}
