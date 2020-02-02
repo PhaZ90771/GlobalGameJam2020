@@ -2,26 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Cube_Behavior : MonoBehaviour
 {
-    [Header("Use WSDA keys when testing cube movement")]
+    public float Speed;
+    public float MoveDistance;
 
-    public float speed;
-    public float moveDistance;
-    public bool test;
-
-    private Vector3 pos;
-    public bool isMoving = false;
+    private bool isMoving = false;
     private Rigidbody rb;
 
-
-    public enum Direction { positiveX, negativeX, positiveZ, negativeZ };
-    Direction direction;
-    // Start is called before the first frame update
+    public enum Direction { PositiveX, NegativeX, PositiveZ, NegativeZ };
+    
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
-        pos = transform.position;
     }
     private void Update()
     {
@@ -41,23 +35,23 @@ public class Cube_Behavior : MonoBehaviour
         {
             switch (i)
             {
-                case Direction.negativeX:
+                case Direction.NegativeX:
                     {
                         rb.AddForce(new Vector3(1.033f, 0, 0), ForceMode.VelocityChange);
                         break;
                     }
-                case Direction.positiveX:
+                case Direction.PositiveX:
                     {
                         rb.AddForce(new Vector3(-1.033f, 0, 0), ForceMode.VelocityChange);
                         break;
                     };
-                case Direction.positiveZ:
+                case Direction.PositiveZ:
                     {
                         rb.AddForce(new Vector3(0, 0, 1.033f), ForceMode.VelocityChange);
 
                         break;
                     }; ;
-                case Direction.negativeZ:
+                case Direction.NegativeZ:
                     {
                         rb.AddForce(new Vector3(0, 0, -1.033f), ForceMode.VelocityChange);
                         break;

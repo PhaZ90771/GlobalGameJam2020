@@ -14,8 +14,6 @@ public class PlayerCharacterController : MonoBehaviour
     public float GravityDownForce = 20f;
     public float GroundCheckDistance = 0.1f;
 
-    public bool isGrounded;
-
     public Vector3 CharacterVelocity { get; private set; }
 
     private Camera camera;
@@ -39,6 +37,15 @@ public class PlayerCharacterController : MonoBehaviour
     private void Update()
     {
         HandlePlayerMovement();
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.collider.CompareTag("Door"))
+        {
+            Door door = hit.collider.gameObject.GetComponent<Door>();
+            door.Open();
+        }
     }
 
     private void HandlePlayerMovement()
@@ -87,14 +94,23 @@ public class PlayerCharacterController : MonoBehaviour
 
     internal void Fire()
     {
-        if (Physics.Raycast(camera.transform.position, camera.transform.forward, out RaycastHit hit))
+        Ray ray = new Ray(camera.transform.position, camera.transform.forward);
+
+        if (Physics.Raycast (ray, out RaycastHit hit))
         {
-            var triggerables = hit.transform.gameObject.GetComponents<MonoBehaviour>().OfType<ITriggerable>();
+            var triggerables = hit.collider.gameObject.GetComponents<MonoBehaviour>();
             foreach (var t in triggerables)
             {
-                t.Trigger();
+                var trigger = t as ITriggerable;
+                if (trigger != null)
+                    trigger.Trigger(hit.distance);
             }
+
+            Debug.DrawLine(camera.transform.position, hit.point, Color.red);
+            return;
         }
+
+        Debug.DrawRay(camera.transform.position, camera.transform.forward, Color.green);
     }
 
     internal void Jump()
@@ -112,13 +128,11 @@ public class PlayerCharacterController : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
             IsGrounded = hit.distance < GroundCheckDistance;
+
             Debug.DrawRay(start, Vector3.down, Color.red);
-        }
-        else
-        {
-            Debug.DrawRay(start, Vector3.down, Color.green);
+            return;
         }
 
-        isGrounded = IsGrounded;
+        Debug.DrawRay(start, Vector3.down, Color.green);
     }
 }
