@@ -84,6 +84,11 @@ public class Grow : MonoBehaviour, ITriggerable
         if (distance < triggableDistance)
             growBlock();
     }
+
+    public bool InRange(float distance)
+    {
+        return distance < triggableDistance;
+    }
 }
 
 

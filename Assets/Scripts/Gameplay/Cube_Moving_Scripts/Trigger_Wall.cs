@@ -17,4 +17,9 @@ public class Trigger_Wall : MonoBehaviour, ITriggerable
     {
         cube_Behavior.MoveCube(Direction);
     }
+
+    public bool InRange(float distance)
+    {
+        return true;
+    }
 }
