@@ -30,6 +30,8 @@ public class PlayerCharacterController : MonoBehaviour
     private CharacterController characterController;
     private CrosshairUI crosshairUI;
 
+    private List<ELEMENTS> elements = new List<ELEMENTS>();
+
     private float rotateY;
     private bool attemptJump = false;
 
@@ -44,7 +46,25 @@ public class PlayerCharacterController : MonoBehaviour
 
         characterController.enableOverlapRecovery = true;
     }
+    private void Start()
+    {
+        foreach (ELEMENTS i in Enum.GetValues(typeof(ELEMENTS)))
+        {
+            if (PlayerPrefs.HasKey(i.ToString()))
+            {
+                elements.Add(i);
+            }
+            UnlockElement(ELEMENTS.NULL);
+        }
 
+    }
+    private void OnDestroy()
+    {
+        foreach (ELEMENTS i in elements)
+        {
+            PlayerPrefs.SetString(i.ToString(), null);
+        }
+    }
     private void Update()
     {
         TestFire();
@@ -115,7 +135,7 @@ public class PlayerCharacterController : MonoBehaviour
             {
                 var trigger = t as ITriggerable;
                 if (trigger != null)
-                    trigger.Trigger(hit.distance);
+                    trigger.Trigger(hit.distance, elements);
             }
 
             Debug.DrawLine(camera.transform.position, hit.point, Color.red);
@@ -137,7 +157,7 @@ public class PlayerCharacterController : MonoBehaviour
                 var trigger = t as ITriggerable;
                 if (trigger != null)
                 {
-                    crosshairUI.CrosshairState = trigger.InRange(hit.distance) ? CrosshairUI.CROSSHAIR_STATES.YES : CrosshairUI.CROSSHAIR_STATES.MAYBE;
+                    crosshairUI.CrosshairState = trigger.InRange(hit.distance, elements) ? CrosshairUI.CROSSHAIR_STATES.YES : CrosshairUI.CROSSHAIR_STATES.MAYBE;
                     return;
                 }
             }
@@ -166,5 +186,13 @@ public class PlayerCharacterController : MonoBehaviour
         }
 
         Debug.DrawRay(start, Vector3.down, Color.green);
+    }
+
+    public void UnlockElement(ELEMENTS element)
+    {
+        if (!elements.Contains(element))
+        {
+            elements.Add(element);
+        }
     }
 }
