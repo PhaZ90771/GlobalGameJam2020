@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class grow : MonoBehaviour, ITriggerable
+public class Grow : MonoBehaviour, ITriggerable
 {
     private Rigidbody rb;
     private float growDir;
