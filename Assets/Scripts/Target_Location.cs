@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Target_Location : MonoBehaviour
 {
+    public bool trigger = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +22,7 @@ public class Target_Location : MonoBehaviour
         if(other.gameObject.CompareTag("Key"))
         {
             Debug.Log("Key Delivered");
+            trigger = true;
         }
     }
 }

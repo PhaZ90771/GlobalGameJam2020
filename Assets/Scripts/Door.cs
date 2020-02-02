@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Door : MonoBehaviour
 {
     public List<Button> Buttons;
+    public List<Target_Location> target_Locations;
     public Material OnMaterial;
     public Material OffMaterial;
 
@@ -27,6 +28,11 @@ public class Door : MonoBehaviour
         foreach (var button in Buttons)
         {
             if (!button.IsTriggered)
+                IsTriggered = false;
+        }
+        foreach (var target_Location in target_Locations)
+        {
+            if (!target_Location.trigger)
                 IsTriggered = false;
         }
 
