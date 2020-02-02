@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4872828770828301755}
   - component: {fileID: 4872828770828301754}
   - component: {fileID: 4872828770828301753}
+  - component: {fileID: 6877138823326159983}
   m_Layer: 0
   m_Name: Burn Cube
   m_TagString: Untagged
@@ -60,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 936ea51e35a06418fbba459fa124f9fa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -94,6 +95,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6877138823326159983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4872828770828301750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e91f47ad88f16084c8220e94581ce4f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particle: {fileID: 0}
+  triggerDistance: 10
 --- !u!1 &4872828771559892247
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,7 +120,7 @@ GameObject:
   - component: {fileID: 4872828771559892248}
   - component: {fileID: 4872828771559892251}
   - component: {fileID: 4872828771559892250}
-  - component: {fileID: 4872828771559892249}
+  - component: {fileID: 2118267730507134752}
   m_Layer: 0
   m_Name: Fire
   m_TagString: Untagged
@@ -4867,7 +4882,7 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &4872828771559892249
+--- !u!114 &2118267730507134752
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4876,7 +4891,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 4872828771559892247}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e91f47ad88f16084c8220e94581ce4f5, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d403cb4f35aa42c9a59be7c7f596b0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particle: {fileID: 4872828771559892251}

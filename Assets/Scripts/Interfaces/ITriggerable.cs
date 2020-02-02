@@ -4,5 +4,6 @@ using UnityEngine;
 
 public interface ITriggerable
 {
-    void Trigger(float distance);
+    bool InRange(float distance, List<PlayerCharacterController.ELEMENTS> playersElements);
+    void Trigger(float distance, List<PlayerCharacterController.ELEMENTS> playersElements);
 }
