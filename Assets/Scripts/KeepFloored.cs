@@ -9,12 +9,10 @@ public class KeepFloored : MonoBehaviour
     private bool isGrounded;
 
     private Collider collider;
-    private Rigidbody rb;
 
     private void Awake()
     {
         collider = GetComponent<Collider>();
-        rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
