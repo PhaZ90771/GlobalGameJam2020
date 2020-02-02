@@ -51,7 +51,7 @@ public class CrosshairUI : MonoBehaviour
             case CROSSHAIR_STATES.MAYBE:
             crosshair.enabled = true;
             newCrosshair = PossibleCrosshair;
-            ElementTooltip.enabled = NeededElement != PlayerCharacterController.ELEMENTS.NULL ? true : false;
+            ElementTooltip.enabled = false;
             ElementsTooltipUI.NeededElement = NeededElement;
             break;
         }
