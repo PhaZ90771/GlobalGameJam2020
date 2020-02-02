@@ -46,6 +46,13 @@ public class PlayerInputHandler : MonoBehaviour
         Controls.Player.DebugFire.performed += ToggleElement;
         Controls.Player.DebugEarth.performed += ToggleElement;
         Controls.Player.DebugWater.performed += ToggleElement;
+        Controls.Player.DebugReset.performed += ResetGame;
+    }
+
+    private void ResetGame(InputAction.CallbackContext obj)
+    {
+        PlayerPrefs.DeleteAll();
+        SceneManager.LoadScene("Main Menu");
     }
 
     private void ToggleElement(InputAction.CallbackContext obj)

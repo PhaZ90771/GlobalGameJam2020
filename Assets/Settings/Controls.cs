@@ -89,6 +89,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""DebugReset"",
+                    ""type"": ""Button"",
+                    ""id"": ""5160399b-2856-4572-be01-3a5acee62fe5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -333,6 +341,28 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""DebugWater"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""44815fd0-d6ee-41cb-b345-cebab9cb40c2"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse;Gamepad"",
+                    ""action"": ""DebugReset"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e0c78dde-96c2-4d85-92e6-13a4b765c473"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DebugReset"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -378,6 +408,7 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Player_DebugFire = m_Player.FindAction("DebugFire", throwIfNotFound: true);
         m_Player_DebugEarth = m_Player.FindAction("DebugEarth", throwIfNotFound: true);
         m_Player_DebugWater = m_Player.FindAction("DebugWater", throwIfNotFound: true);
+        m_Player_DebugReset = m_Player.FindAction("DebugReset", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -436,6 +467,7 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_DebugFire;
     private readonly InputAction m_Player_DebugEarth;
     private readonly InputAction m_Player_DebugWater;
+    private readonly InputAction m_Player_DebugReset;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -449,6 +481,7 @@ public class @Controls : IInputActionCollection, IDisposable
         public InputAction @DebugFire => m_Wrapper.m_Player_DebugFire;
         public InputAction @DebugEarth => m_Wrapper.m_Player_DebugEarth;
         public InputAction @DebugWater => m_Wrapper.m_Player_DebugWater;
+        public InputAction @DebugReset => m_Wrapper.m_Player_DebugReset;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -485,6 +518,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @DebugWater.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDebugWater;
                 @DebugWater.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDebugWater;
                 @DebugWater.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDebugWater;
+                @DebugReset.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDebugReset;
+                @DebugReset.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDebugReset;
+                @DebugReset.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDebugReset;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -516,6 +552,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @DebugWater.started += instance.OnDebugWater;
                 @DebugWater.performed += instance.OnDebugWater;
                 @DebugWater.canceled += instance.OnDebugWater;
+                @DebugReset.started += instance.OnDebugReset;
+                @DebugReset.performed += instance.OnDebugReset;
+                @DebugReset.canceled += instance.OnDebugReset;
             }
         }
     }
@@ -549,5 +588,6 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnDebugFire(InputAction.CallbackContext context);
         void OnDebugEarth(InputAction.CallbackContext context);
         void OnDebugWater(InputAction.CallbackContext context);
+        void OnDebugReset(InputAction.CallbackContext context);
     }
 }
