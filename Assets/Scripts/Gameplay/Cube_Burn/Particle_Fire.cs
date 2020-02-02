@@ -29,7 +29,7 @@ public class Particle_Fire : MonoBehaviour, ITriggerable
 
     public void Trigger(float distance, List<PlayerCharacterController.ELEMENTS> playersElements)
     {
-        if(distance < triggerDistance && playersElements.Contains(PlayerCharacterController.ELEMENTS.FIRE))
+        if(distance < triggerDistance && playersElements.Contains(GetRequiredElement()))
         {
             startFire();
             Destroy(this.gameObject, 3f);
@@ -38,6 +38,8 @@ public class Particle_Fire : MonoBehaviour, ITriggerable
 
     public bool InRange(float distance, List<PlayerCharacterController.ELEMENTS> playersElements)
     {
-        return distance < triggerDistance && playersElements.Contains(PlayerCharacterController.ELEMENTS.FIRE);
+        return distance < triggerDistance && playersElements.Contains(GetRequiredElement());
     }
+
+    public PlayerCharacterController.ELEMENTS GetRequiredElement() => PlayerCharacterController.ELEMENTS.FIRE;
 }
