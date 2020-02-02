@@ -30,8 +30,6 @@ public class Grow : MonoBehaviour, ITriggerable
             posGrown = transform.position;
             posShrunk = transform.position + new Vector3(0, -transform.localScale.y, 0);
         }
-
-        Debug.Log(posGrown.y + "  " +  posShrunk.y);
         growDir = 1;
 
     }
