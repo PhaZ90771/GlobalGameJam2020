@@ -28,4 +28,9 @@ public class Button : MonoBehaviour, ITriggerable
     {
         IsTriggered = distance <= 5f ? !IsTriggered : IsTriggered;
     }
+
+    public bool InRange(float distance)
+    {
+        return distance <= 5f;
+    }
 }

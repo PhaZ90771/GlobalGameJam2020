@@ -35,4 +35,9 @@ public class Particle_Fire : MonoBehaviour, ITriggerable
             Destroy(this.gameObject, 3f);
         }
     }
+
+    public bool InRange(float distance)
+    {
+        return distance < triggerDistance;
+    }
 }

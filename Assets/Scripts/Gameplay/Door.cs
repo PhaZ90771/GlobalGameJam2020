@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Door : MonoBehaviour
+public class Door : MonoBehaviour, ITriggerable
 {
     public List<Button> Buttons;
     public List<Target_Location> target_Locations;
@@ -47,6 +47,19 @@ public class Door : MonoBehaviour
         if (IsTriggered)
         {
             SceneManager.LoadScene(GotoScene);
+        }
+    }
+
+    public bool InRange(float distance)
+    {
+        return distance < 5f && IsTriggered;
+    }
+
+    public void Trigger(float distance)
+    {
+        if (distance < 5f && IsTriggered)
+        {
+            Open();
         }
     }
 }

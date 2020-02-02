@@ -19,6 +19,7 @@ public class PlayerCharacterController : MonoBehaviour
     private Camera camera;
     private PlayerInputHandler playerInputHandler;
     private CharacterController characterController;
+    private CrosshairUI crosshairUI;
 
     private float rotateY;
     private bool attemptJump = false;
@@ -30,12 +31,14 @@ public class PlayerCharacterController : MonoBehaviour
         camera = GetComponentInChildren<Camera>();
         playerInputHandler = GetComponent<PlayerInputHandler>();
         characterController = GetComponent<CharacterController>();
+        crosshairUI = GetComponentInChildren<CrosshairUI>();
 
         characterController.enableOverlapRecovery = true;
     }
 
     private void Update()
     {
+        TestFire();
         HandlePlayerMovement();
     }
 
@@ -111,6 +114,26 @@ public class PlayerCharacterController : MonoBehaviour
         }
 
         Debug.DrawRay(camera.transform.position, camera.transform.forward, Color.green);
+    }
+
+    internal void TestFire()
+    {
+        Ray ray = new Ray(camera.transform.position, camera.transform.forward);
+
+        if (Physics.Raycast(ray, out RaycastHit hit))
+        {
+            var triggerables = hit.collider.gameObject.GetComponents<MonoBehaviour>();
+            foreach (var t in triggerables)
+            {
+                var trigger = t as ITriggerable;
+                if (trigger != null)
+                {
+                    crosshairUI.CrosshairState = trigger.InRange(hit.distance) ? CrosshairUI.CROSSHAIR_STATES.YES : CrosshairUI.CROSSHAIR_STATES.MAYBE;
+                    return;
+                }
+            }
+        }
+        crosshairUI.CrosshairState = CrosshairUI.CROSSHAIR_STATES.NO;
     }
 
     internal void Jump()

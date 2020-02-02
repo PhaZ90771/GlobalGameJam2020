@@ -4,5 +4,6 @@ using UnityEngine;
 
 public interface ITriggerable
 {
+    bool InRange(float distance);
     void Trigger(float distance);
 }
