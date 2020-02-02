@@ -10,6 +10,7 @@ public class ControllerUIButtonShim : MonoBehaviour
     public PlayerInputHandler.CONTROL_MODE CurrentControlMode = PlayerInputHandler.CONTROL_MODE.KEYBOARDMOUSE;
 
     public Controls Controls;
+    public Selectable FirstSelected;
 
     private List<UnityEngine.UI.Button> buttons = new List<UnityEngine.UI.Button>();
     private Selectable selected;
@@ -25,8 +26,7 @@ public class ControllerUIButtonShim : MonoBehaviour
 
     private void Awake()
     {
-        buttons = FindObjectsOfType<UnityEngine.UI.Button>().ToList();
-        selected = buttons[0];
+        selected = FirstSelected;
     }
 
     private void Start()
