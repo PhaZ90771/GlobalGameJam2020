@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class grow : MonoBehaviour
+public class grow : MonoBehaviour, ITriggerable
 {
     private Rigidbody rb;
     private float growDir;
@@ -14,6 +14,7 @@ public class grow : MonoBehaviour
 
     public bool growFirst = true;
     public float speed = 1;
+    public float triggableDistance = 5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -74,11 +75,17 @@ public class grow : MonoBehaviour
         }
         rb.position = growFirst ? posGrown : posShrunk;
         growFirst = !growFirst;
+        yield return new WaitForSeconds(1);
         canGrow = true;
-        yield return null;
+
 
     }
 
-
+    public void Trigger(float distance)
+    {
+        if (distance < triggableDistance)
+            growBlock();
+    }
 }
+
 
